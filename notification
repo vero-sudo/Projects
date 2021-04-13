@@ -142,3 +142,10 @@ else -- Creates if it does not exist
 
 	createNotification(_G.Title.."", _G.Subtitle.."")
 end
+
+--[[ loadstring version
+_G.Title = "Title"
+_G.Subtitle = "Subtitle"
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/vero-sudo/Projects/main/notification"))()
+]]
