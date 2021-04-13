@@ -1,1 +1,144 @@
+--// if you found this then your cool
 
+if game.Players.LocalPlayer.PlayerGui:FindFirstChild("Notifier") then
+
+	--// Variables
+
+	local LocalPlayer = game:GetService("Players").LocalPlayer
+
+	local Notifier = LocalPlayer.PlayerGui.Notifier
+	local Elements = LocalPlayer.PlayerGui.Notifier.Elements
+	local UIListLayout = LocalPlayer.PlayerGui.Notifier.Elements.UIListLayout
+	local Template = LocalPlayer.PlayerGui.Notifier.Template
+	local UICorner = LocalPlayer.PlayerGui.Notifier.Template.UICorner
+	local UIListLayout_2 = LocalPlayer.PlayerGui.Notifier.Elements.UIListLayout
+
+	local Title = LocalPlayer.PlayerGui.Notifier.Template.Title
+	local Subtitle = LocalPlayer.PlayerGui.Notifier.Template.Subtitle
+
+	--// Functions
+
+	local function animateInOut(Window)
+		Window:TweenSize(UDim2.new(0, 170, 0, 40), Enum.EasingDirection.In, Enum.EasingStyle.Elastic, .3)
+		wait(2)
+		Window:TweenSize(UDim2.new(0, 0, 0, 0), Enum.EasingDirection.In, Enum.EasingStyle.Quint, .2)
+		wait(.2)
+		Title.Text = "TITLE"
+		Subtitle.Text = "SUBTITLE"
+		Window:Destroy()
+	end
+
+	local function createNotification(title, subtitle)
+	  local Container = Template:Clone()
+	  Container.Parent = Elements
+	  Container.Name = "Notifier"
+
+	  Container.Title.Text = title
+	  Container.Subtitle.Text = subtitle
+
+	  animateInOut(Container)
+	end
+
+	--//
+
+	createNotification(_G.Title.."", _G.Subtitle.."")
+
+else -- Creates if it does not exist
+
+	--// Instances
+
+	local Notifier = Instance.new("ScreenGui")
+	local Elements = Instance.new("Frame")
+	local UIListLayout = Instance.new("UIListLayout")
+	local Template = Instance.new("Frame")
+	local UICorner = Instance.new("UICorner")
+	local UIListLayout_2 = Instance.new("UIListLayout")
+	
+	local Title = Instance.new("TextLabel")
+	local Subtitle = Instance.new("TextLabel")
+
+	--// Properties
+
+	Notifier.Name = "Notifier"
+	Notifier.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+	Notifier.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+	Notifier.ResetOnSpawn = false
+
+	Elements.Name = "Elements"
+	Elements.Parent = Notifier
+	Elements.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Elements.BackgroundTransparency = 1.000
+	Elements.ClipsDescendants = true
+	Elements.Position = UDim2.new(0.5, -85, 0, -20)
+	Elements.Size = UDim2.new(0, 170, 0, 100)
+
+	UIListLayout.Parent = Elements
+	UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+	UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Bottom
+	UIListLayout.Padding = UDim.new(0, 5)
+
+	Template.Name = "Template"
+	Template.Parent = Notifier
+	Template.AnchorPoint = Vector2.new(0.5, 0.5)
+	Template.BackgroundColor3 = Color3.fromRGB(66, 66, 66)
+	Template.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Template.BorderSizePixel = 0
+	Template.ClipsDescendants = true
+	Template.Position = UDim2.new(0.5, 0, 0.499176264, 0)
+
+	UICorner.CornerRadius = UDim.new(1, 0)
+	UICorner.Parent = Template
+
+	UIListLayout_2.Parent = Template
+	UIListLayout_2.HorizontalAlignment = Enum.HorizontalAlignment.Center
+	UIListLayout_2.SortOrder = Enum.SortOrder.LayoutOrder
+	UIListLayout_2.VerticalAlignment = Enum.VerticalAlignment.Center
+
+	Title.Name = "Title"
+	Title.Parent = Template
+	Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Title.BackgroundTransparency = 1.000
+	Title.Size = UDim2.new(0, 150, 0, 17)
+	Title.Font = Enum.Font.GothamSemibold
+	Title.Text = "OnlyTwentyCharacters"
+	Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+	Title.TextSize = 13.000
+
+	Subtitle.Name = "Subtitle"
+	Subtitle.Parent = Template
+	Subtitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Subtitle.BackgroundTransparency = 1.000
+	Subtitle.Size = UDim2.new(0, 150, 0, 17)
+	Subtitle.Font = Enum.Font.GothamSemibold
+	Subtitle.Text = "OnlyTwentyCharacters"
+	Subtitle.TextColor3 = Color3.fromRGB(200, 200, 200)
+	Subtitle.TextSize = 12.000
+
+	--// Functions
+
+	local function animateInOut(Window)
+		Window:TweenSize(UDim2.new(0, 170, 0, 40), Enum.EasingDirection.In, Enum.EasingStyle.Elastic, .3)
+		wait(2)
+		Window:TweenSize(UDim2.new(0, 0, 0, 0), Enum.EasingDirection.In, Enum.EasingStyle.Quint, .2)
+		wait(.2)
+		Title.Text = "TITLE"
+		Subtitle.Text = "SUBTITLE"
+		Window:Destroy()
+	end
+
+	local function createNotification(title, subtitle)
+	  local Container = Template:Clone()
+	  Container.Parent = Elements
+	  Container.Name = "Notifier"
+
+	  Container.Title.Text = title
+	  Container.Subtitle.Text = subtitle
+
+	  animateInOut(Container)
+	end
+
+	--//
+
+	createNotification(_G.Title.."", _G.Subtitle.."")
+end
